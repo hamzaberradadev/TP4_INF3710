@@ -27,11 +27,11 @@ CREATE TABLE IF NOT EXISTS Fournisseur(
 
 CREATE TABLE IF NOT EXISTS Planrepas(
 numéroplan SERIAL NOT NULL,
-catégorie CHAR(25),
-fréquence VARCHAR(3),
-nbrpersonnes VARCHAR(3),
-nbrcalories VARCHAR(6),
-prix VARCHAR(5),
+catégorie CHAR(25) NOT NULL,
+fréquence VARCHAR(3) NOT NULL,
+nbrpersonnes VARCHAR(3) NOT NULL,
+nbrcalories VARCHAR(6) NOT NULL,
+prix VARCHAR(5) NOT NULL,
 numérofournisseur INT NOT NULL,
 PRIMARY KEY (numéroplan),
 FOREIGN KEY (numérofournisseur) 
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS Famille(
 
 CREATE TABLE IF NOT EXISTS Végétarien(
 	numéroplan INT NOT NULL,
-	typederepas CHAR(20),
+	typederepas CHAR(20) NOT NULL,
 	PRIMARY KEY (numéroplan),
 	FOREIGN KEY (numéroplan)
 	REFERENCES Planrepas(numéroplan)
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS Végétarien(
 
 CREATE TABLE IF NOT EXISTS Pescétarien(
 	numéroplan INT NOT NULL,
-	typedepoisson CHAR(20),
+	typedepoisson CHAR(20) NOT NULL,
 	PRIMARY KEY (numéroplan),
 	FOREIGN KEY (numéroplan)
 	REFERENCES Planrepas(numéroplan)
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS Rapide(
 
 CREATE TABLE IF NOT EXISTS Facile(
 	numéroplan INT NOT NULL,
-	nbingrédients VARCHAR(3),
+	nbingrédients VARCHAR(3) NOT NULL,
 	PRIMARY KEY (numéroplan),
 	FOREIGN KEY (numéroplan)
 	REFERENCES Famille(numéroplan)
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS Facile(
 
 CREATE TABLE IF NOT EXISTS Kitrepas(
     numérokitrepas SERIAL NOT NULL,
-    description VARCHAR(500),
+    description VARCHAR(500) NOT NULL,
     numéroplan INT NOT NULL,
     PRIMARY KEY (numérokitrepas),
     FOREIGN KEY (numéroplan)
@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS Kitrepas(
  
 CREATE TABLE IF NOT EXISTS Image(
     numéroimage SERIAL NOT NULL,
-    données VARCHAR(500),
+    données VARCHAR(500) NOT NULL,
     numérokitrepas INT NOT NULL,
     PRIMARY KEY (numéroimage),
     FOREIGN KEY (numérokitrepas)
@@ -107,8 +107,8 @@ CREATE TABLE IF NOT EXISTS Étape(
     numérokitrepas INT NOT NULL,
     numéroétape INT NOT NULL,
     numérosousétape INT NOT NULL,
-    descriptionétape VARCHAR(500),
-    duréeétape VARCHAR(3),
+    descriptionétape VARCHAR(500) NOT NULL,
+    duréeétape VARCHAR(3) NOT NULL,
     PRIMARY KEY (numérokitrepas, numéroétape,
 				numérosousétape),
     FOREIGN KEY (numérokitrepas)
