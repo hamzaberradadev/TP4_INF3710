@@ -302,3 +302,9 @@ VALUES(
 (SELECT "numérokitrepas" FROM Kitrepas WHERE 
 (description='Un kit balancé qui contient beaucoup de choses')),
 	1, 2, 'voici étape 1.2', '15');
+
+INSERT INTO "ingrédient"("nomingrédient","paysingrédient")
+VALUES('Banane', 'Maroc');
+
+INSERT INTO "ingrédient"("nomingrédient","paysingrédient")
+VALUES('Riz', 'Inde');
