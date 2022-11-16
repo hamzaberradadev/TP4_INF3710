@@ -105,10 +105,12 @@ CREATE TABLE IF NOT EXISTS Image(
  
 CREATE TABLE IF NOT EXISTS Étape(
     numérokitrepas INT NOT NULL,
+    numéroétape INT NOT NULL,
+    numérosousétape INT NOT NULL,
     descriptionétape VARCHAR(500),
     duréeétape VARCHAR(3),
-    numérokitrepasêtrecomposéde VARCHAR(10),
-    PRIMARY KEY (numérokitrepas),
+    PRIMARY KEY (numérokitrepas, numéroétape,
+				numérosousétape),
     FOREIGN KEY (numérokitrepas)
     REFERENCES Kitrepas(numérokitrepas)
     ON UPDATE CASCADE ON DELETE RESTRICT
@@ -284,3 +286,19 @@ INSERT INTO Image("données","numérokitrepas")
 VALUES('40 62 B1 F2 F2 08 A8 ...',
 (SELECT "numérokitrepas" FROM Kitrepas WHERE 
 (description='Un kit complètement débalancé qui contient beaucoup de les choses')));
+
+INSERT INTO "Étape"("numérokitrepas", "numéroétape",
+					"numérosousétape", "descriptionétape",
+				  "duréeétape")
+VALUES(
+(SELECT "numérokitrepas" FROM Kitrepas WHERE 
+(description='Un kit balancé qui contient beaucoup de choses')),
+	1, 1, 'voici étape 1.1', '10');
+	
+INSERT INTO "Étape"("numérokitrepas", "numéroétape",
+					"numérosousétape", "descriptionétape",
+				  "duréeétape")
+VALUES(
+(SELECT "numérokitrepas" FROM Kitrepas WHERE 
+(description='Un kit balancé qui contient beaucoup de choses')),
+	1, 2, 'voici étape 1.2', '15');
