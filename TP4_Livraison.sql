@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS Étape(
     numérokitrepas INT NOT NULL,
     descriptionétape VARCHAR(500),
     duréeétape VARCHAR(3),
-    numérokitrepasêtrecomposéde VARCHAR(10) NOT NULL,
+    numérokitrepasêtrecomposéde VARCHAR(10),
     PRIMARY KEY (numérokitrepas),
     FOREIGN KEY (numérokitrepas)
     REFERENCES Kitrepas(numérokitrepas)
@@ -138,6 +138,7 @@ CREATE TABLE IF NOT EXISTS Contenir(
     numérokitrepas INT NOT NULL,
     numéroingrédient INT NOT NULL,
     PRIMARY KEY (numérokitrepas),
+    PRIMARY KEY (numéroingrédient),
     FOREIGN KEY (numérokitrepas)
     REFERENCES Kitrepas(numérokitrepas)
     ON UPDATE CASCADE ON DELETE RESTRICT,
