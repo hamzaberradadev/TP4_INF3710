@@ -137,7 +137,7 @@ CREATE TABLE IF NOT EXISTS Abonner(
 CREATE TABLE IF NOT EXISTS Contenir(
     numérokitrepas INT NOT NULL,
     numéroingrédient INT NOT NULL,
-    PRIMARY KEY (numérokitrepas),
+    PRIMARY KEY (numérokitrepas, numéroingrédient),
     FOREIGN KEY (numérokitrepas)
     REFERENCES Kitrepas(numérokitrepas)
     ON UPDATE CASCADE ON DELETE RESTRICT,
