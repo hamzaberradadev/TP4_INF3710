@@ -321,3 +321,17 @@ VALUES((SELECT "numéroclient" FROM Client WHERE
 	   (SELECT "numéroplan" FROM Planrepas WHERE 
 		("catégorie" = 'orientale' AND nbrpersonnes='3')),
 	   '1');
+
+INSERT INTO contenir("numérokitrepas", "numéroingrédient")
+VALUES((SELECT "numérokitrepas" FROM Kitrepas WHERE
+	   description=
+		'Un kit balancé qui contient beaucoup de choses'),
+	   (SELECT "numéroingrédient" FROM "ingrédient" WHERE 
+		"nomingrédient" = 'Banane'));
+		
+INSERT INTO contenir("numérokitrepas", "numéroingrédient")
+VALUES((SELECT "numérokitrepas" FROM Kitrepas WHERE
+	   description=
+		'Un kit complètement débalancé qui contient beaucoup de les choses'),
+	   (SELECT "numéroingrédient" FROM "ingrédient" WHERE 
+		"nomingrédient" = 'Riz'));
