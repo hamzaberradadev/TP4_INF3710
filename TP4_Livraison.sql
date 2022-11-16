@@ -1,11 +1,11 @@
 CREATE TABLE IF NOT EXISTS Client(
 numéroclient SERIAL NOT NULL,
-nomclient CHAR(20),
-prénomclient CHAR(20),
-adressecourrielclient VARCHAR(40),
-rueclient VARCHAR(20),
-villeclient CHAR(20),
-codepostalclient VARCHAR(6),
+nomclient CHAR(20) NOT NULL,
+prénomclient CHAR(20) NOT NULL,
+adressecourrielclient VARCHAR(40) NOT NULL,
+rueclient VARCHAR(20) NOT NULL,
+villeclient CHAR(20) NOT NULL,
+codepostalclient VARCHAR(6) NOT NULL,
 PRIMARY KEY (numéroclient)
 );
 
@@ -20,8 +20,8 @@ ON UPDATE CASCADE ON DELETE RESTRICT
 
 CREATE TABLE IF NOT EXISTS Fournisseur(
 	numérofournisseur SERIAL NOT NULL, 
-	nomfournisseur VARCHAR(20),
-	adressefournisseur VARCHAR(40),
+	nomfournisseur VARCHAR(20) NOT NULL,
+	adressefournisseur VARCHAR(40) NOT NULL,
 	PRIMARY KEY (numérofournisseur)
 );
 
@@ -118,8 +118,8 @@ CREATE TABLE IF NOT EXISTS Étape(
  
 CREATE TABLE IF NOT EXISTS Ingrédient(
     numéroingrédient SERIAL NOT NULL,
-    nomingrédient CHAR(20),
-    paysingrédient CHAR(20),
+    nomingrédient CHAR(20) NOT NULL,
+    paysingrédient CHAR(20) NOT NULL,
     PRIMARY KEY (numéroingrédient)
 );
  
