@@ -235,6 +235,26 @@ INSERT INTO Planrepas("catégorie", "fréquence", nbrpersonnes,
 VALUES('grec', 1, 3, 658, 30, (SELECT "numérofournisseur" FROM Fournisseur
 	   WHERE nomFournisseur='La tite Anisse'));
 
+INSERT INTO Planrepas("catégorie", "fréquence", nbrpersonnes,
+					 nbrcalories, prix, "numérofournisseur")
+VALUES('gastronomique', 1, 2, 675, 35, (SELECT "numérofournisseur" FROM Fournisseur
+	   WHERE nomFournisseur='AB Transport'));
+
+INSERT INTO Planrepas("catégorie", "fréquence", nbrpersonnes,
+					 nbrcalories, prix, "numérofournisseur")
+VALUES('gastronomique', 1, 3, 810, 40, (SELECT "numérofournisseur" FROM Fournisseur
+	   WHERE nomFournisseur='AB Transport'));
+
+INSERT INTO Planrepas("catégorie", "fréquence", nbrpersonnes,
+					 nbrcalories, prix, "numérofournisseur")
+VALUES('Italien-Canadien', 1, 2, 910, 35, (SELECT "numérofournisseur" FROM Fournisseur
+	   WHERE nomFournisseur='Benjamin'));
+
+INSERT INTO Planrepas("catégorie", "fréquence", nbrpersonnes,
+					 nbrcalories, prix, "numérofournisseur")
+VALUES('Italien-Canadien', 1, 3, 745, 30, (SELECT "numérofournisseur" FROM Fournisseur
+	   WHERE nomFournisseur='Benjamin'));
+
 INSERT INTO Famille("numéroplan")
 SELECT "numéroplan" FROM Planrepas WHERE catégorie = 'cétogène';
 
