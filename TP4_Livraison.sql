@@ -155,12 +155,27 @@ INSERT INTO Client (
 VALUES ('Dickens', 'Charles',
 	   'c.dickens@yahoo.gbr', 'David Copperfield',
 	   'Pickwick', 'J3927A');
+
 INSERT INTO Client (
 	nomclient,"prénomclient",
 	adressecourrielclient,rueclient, villeclient,
 	codepostalclient)
 VALUES ('Mouse', 'Mickey', 'mickeycollab@disney.ca',
 	   'Fantasy street', 'Los Angeles', 'H4P8Z3');
+
+INSERT INTO Client (
+	nomclient,"prénomclient",
+	adressecourrielclient,rueclient, villeclient,
+	codepostalclient)
+VALUES ('Jonney', 'Marloppe', 'MJfire1337@protonmail.com',
+	   '72 rue Beef', 'Montréal', 'H4PPY5');
+
+INSERT INTO Client (
+	nomclient,"prénomclient",
+	adressecourrielclient,rueclient, villeclient,
+	codepostalclient)
+VALUES ('Konney', 'Marloppe', 'KJfire1337@protonmail.com',
+	   '72 rue Beef', 'Montréal', 'H4PPY5');
 
 INSERT INTO Téléphone("numéroclient", "numérodetéléphone")
 VALUES((SELECT "numéroclient" FROM Client WHERE ("nomclient" = 'Dickens' AND "prénomclient" = 'Charles')), '5148817777');
@@ -173,6 +188,12 @@ VALUES ('QC Transport', '14 rue du Long-Lac, Sainte-Tite-Du-Grand');
 
 INSERT INTO Fournisseur(nomfournisseur, adressefournisseur)
 VALUES ('La tite Anisse', '2131 rue du Saint-Sauveur, Montréal');
+
+INSERT INTO Fournisseur(nomfournisseur, adressefournisseur)
+VALUES ('AB Transport', '1125 rue du Saint-Levin, Montréal');
+
+INSERT INTO Fournisseur(nomfournisseur, adressefournisseur)
+VALUES ('Benjamin', '72 rue Beef, Montréal');
 
 INSERT INTO Planrepas("catégorie", "fréquence", nbrpersonnes,
 					 nbrcalories, prix, "numérofournisseur")
