@@ -167,14 +167,14 @@ INSERT INTO Client (
 	nomclient,"prénomclient",
 	adressecourrielclient,rueclient, villeclient,
 	codepostalclient)
-VALUES ('Jonney', 'Marloppe', 'MJfire1337@protonmail.com',
+VALUES ('Marloppe', 'Jonney', 'MJfire1337@protonmail.com',
 	   '72 rue Beef', 'Montréal', 'H4PPY5');
 
 INSERT INTO Client (
 	nomclient,"prénomclient",
 	adressecourrielclient,rueclient, villeclient,
 	codepostalclient)
-VALUES ('Konney', 'Marloppe', 'KJfire1337@protonmail.com',
+VALUES ('Marloppe', 'Konney', 'KJfire1337@protonmail.com',
 	   '72 rue Beef', 'Montréal', 'H4PPY5');
 
 INSERT INTO Téléphone("numéroclient", "numérodetéléphone")
