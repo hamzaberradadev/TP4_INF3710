@@ -31,7 +31,7 @@ catégorie CHAR(25) NOT NULL,
 fréquence VARCHAR(3) NOT NULL,
 nbrpersonnes VARCHAR(3) NOT NULL,
 nbrcalories VARCHAR(6) NOT NULL,
-prix VARCHAR(5) NOT NULL,
+prix NUMERIC NOT NULL CHECK (prix>=0),
 numérofournisseur INT NOT NULL,
 PRIMARY KEY (numéroplan),
 FOREIGN KEY (numérofournisseur) 
