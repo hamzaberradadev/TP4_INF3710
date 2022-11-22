@@ -352,6 +352,12 @@ VALUES('Banane', 'Maroc');
 INSERT INTO "ingrédient"("nomingrédient","paysingrédient")
 VALUES('Riz', 'Inde');
 
+INSERT INTO "ingrédient"("nomingrédient","paysingrédient")
+VALUES('Curry', 'Inde');
+
+INSERT INTO "ingrédient"("nomingrédient","paysingrédient")
+VALUES('Orange', 'Niger');
+
 INSERT INTO abonner("numéroclient", "numéroplan", "durée")
 VALUES((SELECT "numéroclient" FROM Client WHERE
 	   nomclient='Dickens'),
