@@ -195,6 +195,9 @@ VALUES ('AB Transport', '1125 rue du Saint-Levin, Montréal');
 INSERT INTO Fournisseur(nomfournisseur, adressefournisseur)
 VALUES ('Benjamin', '72 rue Beef, Montréal');
 
+INSERT INTO Fournisseur(adressefournisseur)
+VALUES ('27 chemin du cosmos, Lévis');
+
 INSERT INTO Planrepas("catégorie", "fréquence", nbrpersonnes,
 					 nbrcalories, prix, "numérofournisseur")
 VALUES('cétogène', 2, 2, 572, 30, (SELECT "numérofournisseur" FROM Fournisseur
