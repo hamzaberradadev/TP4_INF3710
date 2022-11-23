@@ -21,13 +21,13 @@ export class DatabaseController {
         .getPlanRepas(Number(req.params.id))
         .then((result: pg.QueryResult) => {
           const planrepaslist: PlanRepas[] = result.rows.map((planrepas: PlanRepas) => ({
-            numéroplan: planrepas.numéroplan,
-            catégorie: planrepas.catégorie,
-            fréquence: planrepas.fréquence,
+            numeroplan: planrepas.numeroplan,
+            categorie: planrepas.categorie,
+            frequence: planrepas.frequence,
             nbrpersonnes: planrepas.nbrpersonnes,
             nbrcalories: planrepas.nbrcalories,
             prix: planrepas.prix,
-            numérofournisseur: planrepas.numérofournisseur,
+            numerofournisseur: planrepas.numerofournisseur,
           } as PlanRepas));
           res.json(planrepaslist);
         })
@@ -39,13 +39,13 @@ export class DatabaseController {
         .getAllPlanRepas()
         .then((result: pg.QueryResult) => {
           const planrepaslist: PlanRepas[] = result.rows.map((planrepas: PlanRepas) => ({
-            numéroplan: planrepas.numéroplan,
-            catégorie: planrepas.catégorie,
-            fréquence: planrepas.fréquence,
+            numeroplan: planrepas.numeroplan,
+            categorie: planrepas.categorie,
+            frequence: planrepas.frequence,
             nbrpersonnes: planrepas.nbrpersonnes,
             nbrcalories: planrepas.nbrcalories,
             prix: planrepas.prix,
-            numérofournisseur: planrepas.numérofournisseur,
+            numerofournisseur: planrepas.numerofournisseur,
           } as PlanRepas));
           res.json(planrepaslist);
         })
