@@ -1,150 +1,150 @@
 CREATE TABLE IF NOT EXISTS Client(
-numéroclient SERIAL NOT NULL,
+numeroclient SERIAL NOT NULL,
 nomclient CHAR(20),
-prénomclient CHAR(20),
+prenomclient CHAR(20),
 adressecourrielclient VARCHAR(40),
 rueclient VARCHAR(20),
 villeclient CHAR(20),
 codepostalclient VARCHAR(6),
-PRIMARY KEY (numéroclient)
+PRIMARY KEY (numeroclient)
 );
 
-CREATE TABLE IF NOT EXISTS Téléphone(
-numéroclient INT NOT NULL,
-numérodetéléphone VARCHAR(14) NOT NULL,
-PRIMARY KEY (numéroclient, numérodetéléphone),
-FOREIGN KEY (numéroclient) 
-REFERENCES Client(numéroclient) 
+CREATE TABLE IF NOT EXISTS Telephone(
+numeroclient INT NOT NULL,
+numerodetelephone VARCHAR(14) NOT NULL,
+PRIMARY KEY (numeroclient, numerodetelephone),
+FOREIGN KEY (numeroclient) 
+REFERENCES Client(numeroclient) 
 ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
 CREATE TABLE IF NOT EXISTS Fournisseur(
-	numérofournisseur SERIAL NOT NULL, 
+	numerofournisseur SERIAL NOT NULL, 
 	nomfournisseur VARCHAR(20),
 	adressefournisseur VARCHAR(40),
-	PRIMARY KEY (numérofournisseur)
+	PRIMARY KEY (numerofournisseur)
 );
 
 CREATE TABLE IF NOT EXISTS Planrepas(
-numéroplan SERIAL NOT NULL,
-catégorie CHAR(25) NOT NULL,
-fréquence VARCHAR(3) NOT NULL,
-nbrpersonnes VARCHAR(3) NOT NULL,
-nbrcalories VARCHAR(6) NOT NULL,
+numeroplan SERIAL NOT NULL,
+categorie CHAR(25) NOT NULL,
+frequence NUMERIC NOT NULL,
+nbrpersonnes NUMERIC NOT NULL,
+nbrcalories NUMERIC NOT NULL,
 prix NUMERIC NOT NULL CHECK (prix>=0),
-numérofournisseur INT NOT NULL,
-PRIMARY KEY (numéroplan),
-FOREIGN KEY (numérofournisseur) 
-REFERENCES Fournisseur(numérofournisseur) 
+numerofournisseur INT NOT NULL,
+PRIMARY KEY (numeroplan),
+FOREIGN KEY (numerofournisseur) 
+REFERENCES Fournisseur(numerofournisseur) 
 ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
 CREATE TABLE IF NOT EXISTS Famille(
-	numéroplan INT NOT NULL,
-	PRIMARY KEY (numéroplan),
-	FOREIGN KEY (numéroplan)
-	REFERENCES Planrepas(numéroplan)
+	numeroplan INT NOT NULL,
+	PRIMARY KEY (numeroplan),
+	FOREIGN KEY (numeroplan)
+	REFERENCES Planrepas(numeroplan)
 	ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
-CREATE TABLE IF NOT EXISTS Végétarien(
-	numéroplan INT NOT NULL,
+CREATE TABLE IF NOT EXISTS Vegetarien(
+	numeroplan INT NOT NULL,
 	typederepas CHAR(20) NOT NULL,
-	PRIMARY KEY (numéroplan),
-	FOREIGN KEY (numéroplan)
-	REFERENCES Planrepas(numéroplan)
+	PRIMARY KEY (numeroplan),
+	FOREIGN KEY (numeroplan)
+	REFERENCES Planrepas(numeroplan)
 	ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
-CREATE TABLE IF NOT EXISTS Pescétarien(
-	numéroplan INT NOT NULL,
+CREATE TABLE IF NOT EXISTS Pescetarien(
+	numeroplan INT NOT NULL,
 	typedepoisson CHAR(20) NOT NULL,
-	PRIMARY KEY (numéroplan),
-	FOREIGN KEY (numéroplan)
-	REFERENCES Planrepas(numéroplan)
+	PRIMARY KEY (numeroplan),
+	FOREIGN KEY (numeroplan)
+	REFERENCES Planrepas(numeroplan)
 	ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
 CREATE TABLE IF NOT EXISTS Rapide(
-	numéroplan INT NOT NULL,
-	tempspréparation VARCHAR(4),
-	PRIMARY KEY (numéroplan),
-	FOREIGN KEY (numéroplan)
-	REFERENCES Famille(numéroplan)
+	numeroplan INT NOT NULL,
+	tempspreparation NUMERIC,
+	PRIMARY KEY (numeroplan),
+	FOREIGN KEY (numeroplan)
+	REFERENCES Famille(numeroplan)
 	ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
 CREATE TABLE IF NOT EXISTS Facile(
-	numéroplan INT NOT NULL,
-	nbingrédients VARCHAR(3) NOT NULL,
-	PRIMARY KEY (numéroplan),
-	FOREIGN KEY (numéroplan)
-	REFERENCES Famille(numéroplan)
+	numeroplan INT NOT NULL,
+	nbingredients INT NOT NULL,
+	PRIMARY KEY (numeroplan),
+	FOREIGN KEY (numeroplan)
+	REFERENCES Famille(numeroplan)
 	ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
 CREATE TABLE IF NOT EXISTS Kitrepas(
-    numérokitrepas SERIAL NOT NULL,
+    numerokitrepas SERIAL NOT NULL,
     description VARCHAR(500) NOT NULL,
-    numéroplan INT NOT NULL,
-    PRIMARY KEY (numérokitrepas),
-    FOREIGN KEY (numéroplan)
-    REFERENCES Planrepas(numéroplan)
+    numeroplan INT NOT NULL,
+    PRIMARY KEY (numerokitrepas),
+    FOREIGN KEY (numeroplan)
+    REFERENCES Planrepas(numeroplan)
     ON UPDATE CASCADE ON DELETE RESTRICT
 );
  
 CREATE TABLE IF NOT EXISTS Image(
-    numéroimage SERIAL NOT NULL,
-    données VARCHAR(500) NOT NULL,
-    numérokitrepas INT NOT NULL,
-    PRIMARY KEY (numéroimage),
-    FOREIGN KEY (numérokitrepas)
-    REFERENCES Kitrepas(numérokitrepas)
+    numeroimage SERIAL NOT NULL,
+    donnees VARCHAR(500) NOT NULL,
+    numerokitrepas INT NOT NULL,
+    PRIMARY KEY (numeroimage),
+    FOREIGN KEY (numerokitrepas)
+    REFERENCES Kitrepas(numerokitrepas)
     ON UPDATE CASCADE ON DELETE RESTRICT
 );
  
-CREATE TABLE IF NOT EXISTS Étape(
-    numérokitrepas INT NOT NULL,
-    numéroétape INT NOT NULL,
-    numérosousétape INT NOT NULL,
-    descriptionétape VARCHAR(500) NOT NULL,
-    duréeétape VARCHAR(3) NOT NULL,
-    PRIMARY KEY (numérokitrepas, numéroétape,
-				numérosousétape),
-    FOREIGN KEY (numérokitrepas)
-    REFERENCES Kitrepas(numérokitrepas)
+CREATE TABLE IF NOT EXISTS Etape(
+    numerokitrepas INT NOT NULL,
+    numeroetape INT NOT NULL,
+    numerosousetape INT NOT NULL,
+    descriptionetape VARCHAR(500) NOT NULL,
+    dureeetape NUMERIC NOT NULL,
+    PRIMARY KEY (numerokitrepas, numeroetape,
+				numerosousetape),
+    FOREIGN KEY (numerokitrepas)
+    REFERENCES Kitrepas(numerokitrepas)
     ON UPDATE CASCADE ON DELETE RESTRICT
 );
  
-CREATE TABLE IF NOT EXISTS Ingrédient(
-    numéroingrédient SERIAL NOT NULL,
-    nomingrédient CHAR(20),
-    paysingrédient CHAR(20),
-    PRIMARY KEY (numéroingrédient)
+CREATE TABLE IF NOT EXISTS Ingredient(
+    numeroingredient SERIAL NOT NULL,
+    nomingredient CHAR(20),
+    paysingredient CHAR(20),
+    PRIMARY KEY (numeroingredient)
 );
  
 CREATE TABLE IF NOT EXISTS Abonner(
-    numéroclient INT NOT NULL,
-    numéroplan INT NOT NULL,
-    durée VARCHAR(3) NOT NULL,
-    PRIMARY KEY (numéroclient, numéroplan),
-    FOREIGN KEY (numéroclient)
-    REFERENCES Client(numéroclient)
+    numeroclient INT NOT NULL,
+    numeroplan INT NOT NULL,
+    duree NUMERIC NOT NULL,
+    PRIMARY KEY (numeroclient, numeroplan),
+    FOREIGN KEY (numeroclient)
+    REFERENCES Client(numeroclient)
     ON UPDATE CASCADE ON DELETE RESTRICT,
-    FOREIGN KEY (numéroplan)
-    REFERENCES Planrepas(numéroplan)
+    FOREIGN KEY (numeroplan)
+    REFERENCES Planrepas(numeroplan)
     ON UPDATE CASCADE ON DELETE RESTRICT
 );
  
 CREATE TABLE IF NOT EXISTS Contenir(
-    numérokitrepas INT NOT NULL,
-    numéroingrédient INT NOT NULL,
-    PRIMARY KEY (numérokitrepas, numéroingrédient),
-    FOREIGN KEY (numérokitrepas)
-    REFERENCES Kitrepas(numérokitrepas)
+    numerokitrepas INT NOT NULL,
+    numeroingredient INT NOT NULL,
+    PRIMARY KEY (numerokitrepas, numeroingredient),
+    FOREIGN KEY (numerokitrepas)
+    REFERENCES Kitrepas(numerokitrepas)
     ON UPDATE CASCADE ON DELETE RESTRICT,
-    FOREIGN KEY (numéroingrédient)
-    REFERENCES Ingrédient(numéroingrédient)
+    FOREIGN KEY (numeroingredient)
+    REFERENCES Ingredient(numeroingredient)
     ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
