@@ -9,4 +9,7 @@ package-lock.json
 coverage/
 
 #Node Modules
-/node_modules
+node_modules
+angular-webpack
+babel-webpack
+out
