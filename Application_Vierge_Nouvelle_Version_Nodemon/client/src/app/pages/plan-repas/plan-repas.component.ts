@@ -1,4 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { CommunicationService } from '../../services/communication.service';
+
+export interface PlanRepas {
+  numeroplan: number;
+  categorie: string;
+  frequence: number;
+  nbrpersonnes: number;
+  nbrcalories: number;
+  prix: number;
+  numerofournisseur: number;
+}
 
 @Component({
   selector: 'app-plan-repas',
@@ -7,9 +18,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlanRepasComponent implements OnInit {
 
-  constructor() { }
+  planrepaslist: PlanRepas[];
+
+  constructor(private readonly communicationService: CommunicationService) {}
 
   ngOnInit(): void {
+    this.getAllPlanRepas();
+  }
+
+  public getAllPlanRepas(): void {
+    this.communicationService.getAllPlanRepas().subscribe((planrepaslist: PlanRepas[]) => {
+      this.planrepaslist = planrepaslist ? planrepaslist : [];
+      console.log(planrepaslist);
+    });
   }
 
 }
