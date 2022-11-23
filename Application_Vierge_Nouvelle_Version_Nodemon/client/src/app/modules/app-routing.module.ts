@@ -5,8 +5,8 @@ import { AppComponent } from "../app.component";
 import { PlanRepasComponent } from "../pages/plan-repas/plan-repas.component";
 
 const routes: Routes = [
-  { path: "app", component: AppComponent },
-  { path: "app/planrepas", component: PlanRepasComponent }
+  { path: "home", component: AppComponent },
+  { path: "home/planrepas", component: PlanRepasComponent }
 ];
 
 @NgModule({
