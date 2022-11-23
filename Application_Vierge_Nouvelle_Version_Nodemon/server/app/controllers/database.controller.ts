@@ -1,9 +1,19 @@
 import { NextFunction, Request, Response, Router } from "express";
 import { inject, injectable } from "inversify";
 import { DatabaseService } from "../services/database.service";
-import { PlanRepas } from '../../../common/tables/PlanRepas';
+// import { PlanRepas } from '../../../common/tables/PlanRepas';
 import Types from "../types";
 import * as pg from "pg";
+
+export interface PlanRepas {
+  numeroplan: number;
+  categorie: string;
+  frequence: number;
+  nbrpersonnes: number;
+  nbrcalories: number;
+  prix: number;
+  numerofournisseur: number;
+}
 
 @injectable()
 export class DatabaseController {
