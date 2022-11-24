@@ -57,7 +57,7 @@ export class CommunicationService {
   public deletePlanrepas(numeroPlanrepas: number): Observable<number> {
     return this.http
       .delete<number>(this.BASE_URL + `/planrepas/${numeroPlanrepas}`)
-      .pipe(catchError(this.handleError<number>("deletePlanrepas"))); // FIXME: pas sur de ca ici
+      .pipe(catchError(this.handleError<number>("deletePlanrepas")));
   }
 
   public updatePlanrepas(planrepas: PlanRepas): Observable<number> {
