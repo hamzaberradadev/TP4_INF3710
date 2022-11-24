@@ -1,0 +1,28 @@
+<h1>Modification d'un nouveau plan repas</h1>
+<form (ngSubmit)="updatePlanRepas()">
+    <div class="form-group">
+      <label for="categorie">Catégorie</label>
+      <input type="text" [value]="newPlanRepas.categorie.trim()" (change)="newPlanRepas.categorie=$event.target.value" maxlength='30' matInput placeholder="Ex. Keto" required>
+    </div>
+    <div class="form-group">
+        <label for="frequence">Fréquence</label>
+        <input type="text" [value]="newPlanRepas.frequence" (change)="newPlanRepas.frequence=$event.target.value" maxlength='3' matInput placeholder="Ex. 3" required>
+    </div>
+    <div class="form-group">
+        <label for="nbrpersonnes">Nombre de personnes</label>
+        <input type="text" [value]="newPlanRepas.nbrpersonnes" (change)="newPlanRepas.nbrpersonnes=$event.target.value" maxlength='3' matInput placeholder="Ex. 4" required>
+    </div>
+    <div class="form-group">
+        <label for="nbrcalories">Nombre de calories</label>
+        <input type="text" [value]="newPlanRepas.nbrcalories" (change)="newPlanRepas.nbrcalories=$event.target.value" maxlength='6' matInput placeholder="Ex. 350" required>
+    </div>
+    <div class="form-group">
+        <label for="prix">Prix</label>
+        <input type="text" [value]="newPlanRepas.prix" (change)="newPlanRepas.prix=$event.target.value" maxlength='10' matInput placeholder="Ex. 19.90" required>
+    </div>
+    <div class="form-group">
+        <label for="numerofournisseur">Numéro du fournisseur</label>
+        <input type="text" [value]="newPlanRepas.numerofournisseur" (change)="newPlanRepas.numerofournisseur=$event.target.value" maxlength='5' matInput placeholder="Ex. 1" required>
+    </div>
+    <button type="submit" class="btn btn-success" mat-dialog-close>Modifier le plan</button>
+</form>

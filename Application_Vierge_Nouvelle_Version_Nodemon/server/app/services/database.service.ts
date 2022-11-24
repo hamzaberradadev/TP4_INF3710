@@ -33,7 +33,7 @@ export class DatabaseService {
 
   async getAllPlanRepas(): Promise<pg.QueryResult> {
     const client = await this.pool.connect();
-    const queryText: string = `SELECT * FROM planrepas;`;
+    const queryText: string = `SELECT * FROM planrepas ORDER BY numeroplan ASC;`;
     const res = await client.query(queryText);
     client.release();
     return res;
@@ -100,7 +100,7 @@ export class DatabaseService {
       planrepas.numerofournisseur,
       planrepas.numeroplan
     ]; //`UPDATE planrepas SET categorie = $1, anneeMiseEnMarche = $2, //FIXME: je pense pas que mon premier set est bon
-    const queryText: string = `UPDATE planrepas SET categories = $1, frequence = $2, nbrpersonnes = $3, nbrcalories = $4, prix = $5, numerofournisseur = $6 WHERE numeroplan = $7;`; // FIXME: je ne comprends pas les $1
+    const queryText: string = `UPDATE planrepas SET categorie = $1, frequence = $2, nbrpersonnes = $3, nbrcalories = $4, prix = $5, numerofournisseur = $6 WHERE numeroplan = $7;`; // FIXME: je ne comprends pas les $1
     const res = await client.query(queryText, values);
     client.release();
     return res;

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { CommunicationService } from '../../services/communication.service';
 import { AddPlanRepasComponent } from '../add-plan-repas/add-plan-repas.component';
+import { UpdatePlanRepasComponent } from '../update-plan-repas/update-plan-repas.component';
 
 export interface PlanRepas {
   numeroplan: number;
@@ -37,26 +38,14 @@ export class PlanRepasAdminComponent implements OnInit {
   }
 
   openAddDialog() {
-    const dialogConfig = new MatDialogConfig();
-    // dialogConfig.disableClose = false;
-    // dialogConfig.autoFocus = true;
-    // dialogConfig.minWidth = '650px';
-    // dialogConfig.maxWidth = '650px';
-    this.dialog.open(AddPlanRepasComponent, dialogConfig);
+    this.dialog.open(AddPlanRepasComponent);
   }
-
-  // addPlanRepas(): void {
-  //   // this.openDialog();
-  //   // const sep = "##//##";
-  //   this.communicationService.insertPlanRepas({
-  //     numeroplan: 0,
-  //     categorie: 'catégorie test',
-  //     frequence: 7,
-  //     nbrpersonnes: 7,
-  //     nbrcalories: 7,
-  //     prix: 7,
-  //     numerofournisseur: 1,
-  //   } as PlanRepas).subscribe((resInsVar: number) => {});
-  // }
+  
+  openUpdateDialog(planRepasToUpdate: PlanRepas) {
+    this.dialog.open(UpdatePlanRepasComponent, {
+      data: { planRepas: planRepasToUpdate },
+  }
+);
+  }
 
 }
