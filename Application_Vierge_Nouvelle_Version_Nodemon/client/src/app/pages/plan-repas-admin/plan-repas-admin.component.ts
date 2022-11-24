@@ -34,4 +34,18 @@ export class PlanRepasAdminComponent implements OnInit {
     });
   }
 
+  addPlanRepas(): void {
+    // this.openDialog();
+    // const sep = "##//##";
+    this.communicationService.insertPlanRepas({
+      numeroplan: 0,
+      categorie: 'catégorie test',
+      frequence: 7,
+      nbrpersonnes: 7,
+      nbrcalories: 7,
+      prix: 7,
+      numerofournisseur: 1,
+    } as PlanRepas).subscribe((resInsVar: number) => {});
+  }
+
 }

@@ -42,6 +42,12 @@ export class CommunicationService {
       .pipe(catchError(this.handleError<PlanRepas[]>("getSpecificPlanRepas")));
   }
 
+  public insertPlanRepas(planrepas: PlanRepas): Observable<number> {
+    return this.http
+      .post<number>(this.BASE_URL + "/planrepas", planrepas)
+      .pipe(catchError(this.handleError<number>("insertVariete")));
+  }
+
   private handleError<T>(
     request: string,
     result?: T
