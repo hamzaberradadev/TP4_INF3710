@@ -61,4 +61,18 @@ export class DatabaseService {
     client.release();
     return res;
   }
+  
+  public async deleteByNumeroplan(numeroplan: number): Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    if (!numeroplan) {
+      throw new Error("Impossible de supprimer le plan repas.");
+    }
+    const values: number[] = [
+      numeroplan
+    ];
+    const queryText: string = `DELETE FROM jardinCommMR.Variete WHERE numeroplan = $1;`;
+    const res = await client.query(queryText, values);
+    client.release()
+    return res;
+  }
 }

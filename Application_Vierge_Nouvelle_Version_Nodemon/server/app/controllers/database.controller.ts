@@ -89,6 +89,18 @@ export class DatabaseController {
       }
     );
 
+    router.delete("/planrepas", (req: Request, res: Response, _: NextFunction) => {
+        this.databaseService
+          .deleteByNumeroplan(req.body.numeroplan)
+          .then((result: pg.QueryResult) => {
+            res.json(result.rowCount);
+          })
+          .catch((e: Error) => {
+            console.error(e.stack);
+            res.json(-1);
+          });
+      }
+    );
     return router;
   }
 }
