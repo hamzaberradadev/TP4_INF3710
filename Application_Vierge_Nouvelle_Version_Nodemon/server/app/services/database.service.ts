@@ -70,6 +70,7 @@ export class DatabaseService {
   
   public async deleteByNumeroplan(numeroplan: number): Promise<pg.QueryResult> {
     const client = await this.pool.connect();
+    console.log(numeroplan);
     if (!numeroplan) {
       throw new Error("Impossible de supprimer le plan repas.");
     }

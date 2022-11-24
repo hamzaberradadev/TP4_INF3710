@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CommunicationService } from 'src/app/services/communication.service';
 
 @Component({
   selector: 'app-delete-plan-repas',
@@ -9,26 +10,18 @@ export class DeletePlanRepasComponent implements OnInit {
 
   @Input() numeroPlanADelete: number;
 
-  // constructor(private readonly communicationService: CommunicationService) {
-  //   this.numeroplan = 0;
-  // }
+  constructor(private readonly communicationService: CommunicationService) {
+    // this.numeroplan = 0;
+  }
 
-  constructor() {}
+  // constructor() {}
 
   ngOnInit(): void {
   }
 
   deletePlanRepas() {
-  //   this.communicationService.insertPlanRepas({
-  //     numeroplan: 0,
-  //     categorie: this.newPlanRepas.categorie,
-  //     frequence: this.newPlanRepas.frequence,
-  //     nbrpersonnes: this.newPlanRepas.nbrpersonnes,
-  //     nbrcalories: this.newPlanRepas.nbrcalories,
-  //     prix: this.newPlanRepas.prix,
-  //     numerofournisseur: this.newPlanRepas.numerofournisseur,
-  //   } as PlanRepas).subscribe((resInsVar: number) => {});
-  console.log('le numero a delete est :' + this.numeroPlanADelete);
+    this.communicationService.deletePlanrepas(this.numeroPlanADelete).subscribe((resInsVar: number) => {});
+  // console.log('le numero a delete est :' + this.numeroPlanADelete);
   }
 
 }

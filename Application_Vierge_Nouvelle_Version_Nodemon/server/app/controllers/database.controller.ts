@@ -96,9 +96,9 @@ export class DatabaseController {
       }
     );
 
-    router.delete("/planrepas", (req: Request, res: Response, _: NextFunction) => {
+    router.delete("/planrepas/:id", (req: Request, res: Response, _: NextFunction) => {
         this.databaseService
-          .deleteByNumeroplan(req.body.numeroplan)
+          .deleteByNumeroplan(parseInt(req.params.id))
           .then((result: pg.QueryResult) => {
             res.json(result.rowCount);
           })
