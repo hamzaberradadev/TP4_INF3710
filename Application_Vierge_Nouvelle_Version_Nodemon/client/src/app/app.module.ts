@@ -9,11 +9,13 @@ import { CommunicationService } from "./services/communication.service";
 import { AppMaterialModule } from './modules/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PlanRepasComponent } from './pages/plan-repas/plan-repas.component';
+import { PlanRepasAdminComponent } from './pages/plan-repas-admin/plan-repas-admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PlanRepasComponent
+    PlanRepasComponent,
+    PlanRepasAdminComponent
   ],
   imports: [
     CommonModule,

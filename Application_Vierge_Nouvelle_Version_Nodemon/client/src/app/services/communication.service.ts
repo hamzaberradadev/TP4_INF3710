@@ -42,7 +42,6 @@ export class CommunicationService {
       .pipe(catchError(this.handleError<PlanRepas[]>("getSpecificPlanRepas")));
   }
 
-  // À DÉCOMMENTER ET À UTILISER LORSQUE VOTRE COMMUNICATION EST IMPLÉMENTÉE
   private handleError<T>(
     request: string,
     result?: T
