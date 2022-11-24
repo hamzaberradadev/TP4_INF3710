@@ -28,7 +28,9 @@
     </ng-container>
     <ng-container matColumnDef="numerofournisseur">
       <th mat-header-cell *matHeaderCellDef> Numéro du fournisseur </th>
-      <td mat-cell *matCellDef="let planrepas"> {{planrepas.numerofournisseur}} </td>
+      <td mat-cell *matCellDef="let planrepas"> {{planrepas.numerofournisseur}}
+        <app-delete-plan-repas [numeroPlanADelete]="planrepas.numeroplan"></app-delete-plan-repas>
+      </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
     <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
