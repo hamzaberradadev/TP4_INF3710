@@ -48,6 +48,12 @@ export class CommunicationService {
       .pipe(catchError(this.handleError<number>("insertVariete")));
   }
 
+  public deletePlanrepas(numeroPlanrepas: number): Observable<number> {
+    return this.http
+      .delete<number>(this.BASE_URL + `/planrepas/${numeroPlanrepas}`)
+      .pipe(catchError(this.handleError<number>("numeroPlanrepas"))); // FIXME: pas sur de ca ici
+  }
+  
   private handleError<T>(
     request: string,
     result?: T
