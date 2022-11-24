@@ -44,8 +44,7 @@ export class PlanRepasAdminComponent implements OnInit {
   openUpdateDialog(planRepasToUpdate: PlanRepas) {
     this.dialog.open(UpdatePlanRepasComponent, {
       data: { planRepas: planRepasToUpdate },
-  }
-);
+    });
   }
 
 }

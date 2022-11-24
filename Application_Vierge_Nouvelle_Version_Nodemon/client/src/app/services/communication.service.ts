@@ -63,7 +63,7 @@ export class CommunicationService {
   public updatePlanrepas(planrepas: PlanRepas): Observable<number> {
     return this.http
       .put<number>(this.BASE_URL + "/planrepas", planrepas)
-      .pipe(catchError(this.handleError<number>("updatePlanrepas"))); //FIXME: dis good ? 
+      .pipe(catchError(this.handleError<number>("updatePlanrepas")));
   }
 
   getAllFournisseurs(): Observable<Fournisseurs[]> {
