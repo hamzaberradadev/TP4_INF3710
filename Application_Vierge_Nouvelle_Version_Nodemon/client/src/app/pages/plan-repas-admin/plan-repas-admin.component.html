@@ -1,5 +1,6 @@
 <div>
   <h1>Nos Plan Repas</h1>
+  <button mat-raised-button color="primary" class="btn-add" routerLink="AJOUTER">Ajouter un plan repas<mat-icon>add</mat-icon></button>
   <table mat-table matSort [dataSource]="this.planrepaslist" class="mat-elevation-z8">
     <ng-container matColumnDef="numeroplan">
       <th mat-header-cell *matHeaderCellDef> Numéro du plan </th>
