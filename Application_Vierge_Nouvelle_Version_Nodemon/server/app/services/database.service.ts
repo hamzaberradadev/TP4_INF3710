@@ -70,9 +70,32 @@ export class DatabaseService {
     const values: number[] = [
       numeroplan
     ];
-    const queryText: string = `DELETE FROM jardinCommMR.Variete WHERE numeroplan = $1;`;
+    const queryText: string = `DELETE FROM planrepas WHERE numeroplan = $1;`;
     const res = await client.query(queryText, values);
     client.release()
+    return res;
+  }
+
+  public async updatePlanRepas(planrepas: PlanRepas): Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    //FIXME: je sais pas si on doit garder les quatres lignes ci-dessous et a quoi elles servent et comment elles marchent
+    // const sep = "##//##";
+    // const descriptions: string[] = planrepas.description.split(sep);
+    // if (!planrepas.numeroplan || !planrepas.categorie.toString().length || !planrepas.commentairegeneral.length || descriptions.length !== 3 || !planrepas.nom.length || !planrepas.periodemiseenplace.length || !planrepas.perioderecolte.length) {
+    //   throw new Error("Impossible de modifier la variété désirée.");
+    // }
+    const values: (string | number)[] = [
+      planrepas.categorie,
+      planrepas.frequence,
+      planrepas.nbrpersonnes,
+      planrepas.nbrcalories,
+      planrepas.prix,
+      planrepas.numerofournisseur,
+      planrepas.numeroplan
+    ]; //`UPDATE planrepas SET categorie = $1, anneeMiseEnMarche = $2, //FIXME: je pense pas que mon premier set est bon
+    const queryText: string = `UPDATE planrepas SET categories = $1, frequence = $2, nbrpersonnes = $3, nbrcalories = $4, prix = $5, numerofournisseur = $6 WHERE numeroplan = $7;`; // FIXME: je ne comprends pas les $1
+    const res = await client.query(queryText, values);
+    client.release();
     return res;
   }
 }

@@ -101,6 +101,29 @@ export class DatabaseController {
           });
       }
     );
+
+    router.put("/planrepas", (req: Request, res: Response, _: NextFunction) => {
+        // FIXME: est-ce que PlanRepas a ete ajoute par dorian ?
+        const planrepas: PlanRepas = {
+          numeroplan: req.body.numeroplan,
+          categorie: req.body.categorie,
+          frequence: req.body.frequence,
+          nbrpersonnes: req.body.nbrpersonnes,
+          nbrcalories: req.body.nbrcalories,
+          prix: req.body.prix,
+          numerofournisseur: req.body.numerofournisseur,
+        };
+        this.databaseService
+          .updatePlanRepas(planrepas)
+          .then((result: pg.QueryResult) => {
+            res.json(result.rowCount);
+          })
+          .catch((e: Error) => {
+            console.error(e.stack);
+            res.json(-1);
+          });
+      }
+    );
     return router;
   }
 }

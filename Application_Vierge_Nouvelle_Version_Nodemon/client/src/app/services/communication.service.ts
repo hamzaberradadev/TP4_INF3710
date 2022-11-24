@@ -45,13 +45,19 @@ export class CommunicationService {
   public insertPlanRepas(planrepas: PlanRepas): Observable<number> {
     return this.http
       .post<number>(this.BASE_URL + "/planrepas", planrepas)
-      .pipe(catchError(this.handleError<number>("insertVariete")));
+      .pipe(catchError(this.handleError<number>("insertPlanrepas")));
   }
 
   public deletePlanrepas(numeroPlanrepas: number): Observable<number> {
     return this.http
       .delete<number>(this.BASE_URL + `/planrepas/${numeroPlanrepas}`)
-      .pipe(catchError(this.handleError<number>("numeroPlanrepas"))); // FIXME: pas sur de ca ici
+      .pipe(catchError(this.handleError<number>("deletePlanrepas"))); // FIXME: pas sur de ca ici
+  }
+
+  public updatePlanrepas(planrepas: PlanRepas): Observable<number> {
+    return this.http
+      .put<number>(this.BASE_URL + "/planrepas", planrepas)
+      .pipe(catchError(this.handleError<number>("updatePlanrepas"))); //FIXME: dis good ? 
   }
   
   private handleError<T>(
