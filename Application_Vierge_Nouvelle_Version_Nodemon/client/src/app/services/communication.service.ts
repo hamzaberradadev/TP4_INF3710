@@ -14,6 +14,12 @@ export interface PlanRepas {
   numerofournisseur: number;
 }
 
+export interface Fournisseurs {
+  numerofournisseurs: number,
+  nomfournisseur: string,
+  adressefournisseur: string;
+}
+
 @Injectable()
 export class CommunicationService {
   // À DÉCOMMENTER ET À UTILISER LORSQUE VOTRE COMMUNICATION EST IMPLÉMENTÉE
@@ -58,6 +64,12 @@ export class CommunicationService {
     return this.http
       .put<number>(this.BASE_URL + "/planrepas", planrepas)
       .pipe(catchError(this.handleError<number>("updatePlanrepas"))); //FIXME: dis good ? 
+  }
+
+  getAllFournisseurs(): Observable<Fournisseurs[]> {
+    return this.http
+      .get<Fournisseurs[]>(this.BASE_URL + "/fournisseur")
+      .pipe(catchError(this.handleError<Fournisseurs[]>("getAllPlanRepas")));
   }
   
   private handleError<T>(

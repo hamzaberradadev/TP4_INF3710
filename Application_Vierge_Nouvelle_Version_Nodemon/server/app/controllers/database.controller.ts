@@ -2,6 +2,7 @@ import { NextFunction, Request, Response, Router } from "express";
 import { inject, injectable } from "inversify";
 import { DatabaseService } from "../services/database.service";
 // import { PlanRepas } from '../../../common/tables/PlanRepas';
+// import { Fournisseurs } from "../../../common/tables/Fournisseurs";
 import Types from "../types";
 import * as pg from "pg";
 
@@ -13,6 +14,12 @@ export interface PlanRepas {
   nbrcalories: number;
   prix: number;
   numerofournisseur: number;
+}
+
+export interface Fournisseurs {
+  numerofournisseurs: number,
+  nomfournisseur: string,
+  adressefournisseur: string;
 }
 
 @injectable()
@@ -124,6 +131,21 @@ export class DatabaseController {
           });
       }
     );
+    router.get("/fournisseur", (req: Request, res: Response, _: NextFunction) => {
+      this.databaseService
+        .getAllFournisseurs()
+        .then((result: pg.QueryResult) => {
+          const listeFournisseurs: Fournisseurs[] = result.rows.map((listeFournisseurs: Fournisseurs) => ({
+            numerofournisseurs: listeFournisseurs.numerofournisseurs,
+            nomfournisseur: listeFournisseurs.nomfournisseur,
+            adressefournisseur: listeFournisseurs.adressefournisseur,
+          } as Fournisseurs));
+          res.json(listeFournisseurs);
+        })
+        .catch((e: Error) => {
+          console.error(e.stack);
+        });
+    });
     return router;
   }
 }
