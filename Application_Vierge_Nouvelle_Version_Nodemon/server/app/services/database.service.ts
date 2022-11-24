@@ -17,7 +17,7 @@ export class DatabaseService {
 
   async getAllPlanRepas(): Promise<pg.QueryResult> {
     const client = await this.pool.connect();
-    const queryText: string = `SELECT * FROM Planrepas;`;
+    const queryText: string = `SELECT * FROM planrepas;`;
     const res = await client.query(queryText);
     client.release();
     return res;
@@ -25,7 +25,7 @@ export class DatabaseService {
 
   async getPlanRepas(id: number): Promise<pg.QueryResult> {
     const client = await this.pool.connect();
-    const queryText: string = `SELECT * FROM Planrepas WHERE "numéroplan" = ${id.toString()};`;
+    const queryText: string = `SELECT * FROM planrepas WHERE numeroplan = ${id.toString()};`;
     const res = await client.query(queryText);
     client.release();
     return res;

@@ -19,6 +19,7 @@ export interface PlanRepas {
 export class PlanRepasComponent implements OnInit {
 
   planrepaslist: PlanRepas[];
+  columnsToDisplay = ['numeroplan', 'categorie', 'frequence', 'nbrpersonnes', 'nbrcalories', 'prix', 'numerofournisseur'];
 
   constructor(private readonly communicationService: CommunicationService) {}
 
