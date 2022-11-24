@@ -1,0 +1,28 @@
+<h1>Ajout d'un nouveau plan repas</h1>
+<form (ngSubmit)="addPlanRepas()" #planRepasForm="ngForm">
+    <div class="form-group">
+      <label for="categorie">Catégorie</label>
+      <input type="text" [(ngModel)]="newPlanRepas.categorie" maxlength='30' matInput placeholder="Ex. Keto" required>
+    </div>
+    <div class="form-group">
+        <label for="frequence">Fréquence</label>
+        <input type="text" [(ngModel)]="newPlanRepas.frequence" maxlength='3' matInput placeholder="Ex. 3" required>
+    </div>
+    <div class="form-group">
+        <label for="nbrpersonnes">Nombre de personnes</label>
+        <input type="text" [(ngModel)]="newPlanRepas.nbrpersonnes" maxlength='3' matInput placeholder="Ex. 4" required>
+    </div>
+    <div class="form-group">
+        <label for="nbrcalories">Nombre de calories</label>
+        <input type="text" [(ngModel)]="newPlanRepas.nbrcalories" maxlength='6' matInput placeholder="Ex. 350" required>
+    </div>
+    <div class="form-group">
+        <label for="prix">Prix</label>
+        <input type="text" [(ngModel)]="newPlanRepas.prix" maxlength='10' matInput placeholder="Ex. 19.90" required>
+    </div>
+    <div class="form-group">
+        <label for="numerofournisseur">Numéro du fournisseur</label>
+        <input type="text" [(ngModel)]="newPlanRepas.numerofournisseur" maxlength='5' matInput placeholder="Ex. 1" required>
+    </div>
+    <button type="submit" class="btn btn-success" mat-dialog-close>Ajouter le plan</button>
+</form>
